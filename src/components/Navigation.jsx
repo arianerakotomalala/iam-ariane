@@ -1,135 +1,142 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Avatar from "@mui/material/Avatar";
 
-export default function Navigation () {
-	const [isOpen, setIsOpen] = useState(false);
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
 
-	return (
-		<nav aria-label="Navigation principale" className="nav-root">
-			<style>{`
-				.nav-root {
-					position: sticky;
-					top: 0;
-					z-index: 1000;
-					background: rgba(18, 18, 18, 0.7);
-					backdrop-filter: saturate(180%) blur(10px);
-					-webkit-backdrop-filter: saturate(180%) blur(10px);
-					border-bottom: 1px solid rgba(255,255,255,0.08);
-				}
+  const handleToggle = () => setOpen((v) => !v);
+  const handleClose = () => setOpen(false);
 
-				.nav-container {
-					max-width: 1100px;
-					margin: 0 auto;
-					padding: 0.75rem 1rem;
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-				}
+  const links = [
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+  ];
 
-				.brand {
-					color: #ffffff;
-					font-weight: 700;
-					letter-spacing: 0.3px;
-				}
+  return (
+    <AppBar
+      position="sticky"
+      elevation={0}
+      sx={{
+        background: "rgba(18,18,18,0.8)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
+      <Toolbar
+        sx={{
+          maxWidth: 1100,
+          width: "100%",
+          mx: "auto",
+          px: { xs: 2, sm: 3 },
+          minHeight: { xs: 70, sm: 76 },
+        }}
+      >
+         <Avatar src="/src/assets/profil.jpg" alt="avatar"  sx={{ width: 56, height: 56 }} />
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 700,
+            letterSpacing: 0.9,
+            flexGrow: 1,
+            fontSize: { xs: "1.05rem", sm: "1.15rem", lg: "1.25rem" },
+          }}
+        >
+         
+          Rakotomalala H. Ariane
+        </Typography>
 
-				.menu-toggle {
-					display: none;
-					background: transparent;
-					border: 0;
-					width: 40px;
-					height: 40px;
-					border-radius: 8px;
-					align-items: center;
-					justify-content: center;
-					color: #fff;
-					cursor: pointer;
-				}
+        {/* Desktop links - visibles uniquement sur écrans larges (lg et +) */}
+        <Box 
+          sx={{ 
+            display: { xs: "none", sm: "none", md: "none", lg: "flex" },
+            gap: 1.2 
+          }}
+        >
+          {links.map((link) => (
+            <Button key={link.href} color="inherit" href={link.href}>
+              {link.label}
+            </Button>
+          ))}
+          <Button
+            variant="contained"
+            color="primary"
+            href="#contact"
+            sx={{
+              borderRadius: 999,
+              textTransform: "none",
+              fontWeight: 600,
+            }}
+          >
+            Contact
+          </Button>
+        </Box>
 
-				.hamburger,
-				.hamburger::before,
-				.hamburger::after {
-					content: '';
-					display: block;
-					width: 22px;
-					height: 2px;
-					background: currentColor;
-					transition: transform 200ms ease, opacity 200ms ease;
-				}
+        {/* Hamburger - visible par défaut, caché uniquement sur grands écrans (lg+) */}
+        <IconButton
+          color="inherit"
+          aria-label="ouvrir le menu"
+          onClick={handleToggle}
+          sx={{ 
+            display: { xs: "inline-flex", sm: "inline-flex", md: "inline-flex", lg: "none" },
+            ml: 1,
+            minWidth: 48,
+            minHeight: 48
+          }}
+        >
+          <MenuIcon sx={{ fontSize: 28 }} />
+        </IconButton>
+      </Toolbar>
 
-				.hamburger::before { transform: translateY(-6px); }
-				.hamburger::after { transform: translateY(6px); }
-
-				.menu-toggle[aria-expanded="true"] .hamburger { opacity: 0; }
-				.menu-toggle[aria-expanded="true"] .hamburger::before { transform: rotate(45deg); }
-				.menu-toggle[aria-expanded="true"] .hamburger::after { transform: rotate(-45deg); }
-
-				.nav-links {
-					list-style: none;
-					margin: 0;
-					padding: 0;
-					display: flex;
-					gap: 1rem;
-				}
-
-				.nav-links a {
-					position: relative;
-					text-decoration: none;
-					color: #e8e8e8;
-					padding: 0.4rem 0.2rem;
-					transition: color 150ms ease;
-				}
-
-				.nav-links a::after {
-					content: '';
-					position: absolute;
-					left: 0;
-					bottom: 0;
-					width: 100%;
-					height: 2px;
-					background: linear-gradient(90deg,#7c3aed,#06b6d4);
-					transform: scaleX(0);
-					transform-origin: left;
-					transition: transform 180ms ease;
-				}
-
-				.nav-links a:hover { color: #ffffff; }
-				.nav-links a:hover::after { transform: scaleX(1); }
-
-				@media (max-width: 768px) {
-					.menu-toggle { display: inline-flex; }
-					.nav-links {
-						position: absolute;
-						top: 56px;
-						left: 0;
-						right: 0;
-						background: rgba(18, 18, 18, 0.95);
-						backdrop-filter: blur(6px);
-						border-bottom: 1px solid rgba(255,255,255,0.08);
-						flex-direction: column;
-						gap: 0;
-						padding: 0.5rem 1rem 1rem;
-						display: none;
-					}
-					.nav-links.open { display: flex; }
-				}
-			`}</style>
-
-			<div className="nav-container">
-				<strong className="brand">Mon Portfolio</strong>
-				<button
-					className="menu-toggle"
-					aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-					aria-controls="primary-nav"
-					aria-expanded={isOpen}
-					onClick={() => setIsOpen(v => !v)}
-				>
-					<span className="hamburger" />
-				</button>
-				<ul id="primary-nav" className={`nav-links ${isOpen ? 'open' : ''}`}>
-					<li><a href="#home">Home</a></li>
-					<li><a href="#projet">Projet</a></li>
-					<li><a href="#skills">Skills</a></li>
-				</ul>
-			</div>
-		</nav>
-	);
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          sx: {
+            backgroundColor: "rgba(10,10,15,0.96)",
+            color: "#e5e5e5",
+            backdropFilter: "blur(12px)",
+          },
+        }}
+      >
+        <Box sx={{ width: 240, mt: 2 }}>
+          <List>
+            {links.map((link) => (
+              <ListItem key={link.href} disablePadding>
+                <ListItemButton
+                  component="a"
+                  href={link.href}
+                  onClick={handleClose}
+                >
+                  <ListItemText primary={link.label} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+            <ListItem disablePadding>
+              <ListItemButton
+                component="a"
+                href="#contact"
+                onClick={handleClose}
+              >
+                <ListItemText primary="Contact" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
+    </AppBar>
+  );
 }
