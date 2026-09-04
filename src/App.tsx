@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import About from "./components/About";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -74,7 +73,6 @@ export default function App() {
         {/* <WhatIDo /> */}
         <Projects />
         <About />
-        <Contact />
       </main>
       <Footer />
 
