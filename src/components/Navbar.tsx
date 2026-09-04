@@ -58,7 +58,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
                 href={link.href}
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
-                  "rounded-md px-3 py-2 text-base font-normal transition hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--accent))]",
+                  "rounded-md px-3 py-2 text-base font-bold transition hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--accent))]",
                   isActive
                     ? "bg-[hsl(var(--secondary))] text-[hsl(var(--accent))]"
                     : "text-[hsl(var(--muted-foreground))]",
@@ -104,7 +104,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
                   onClick={() => setOpen(false)}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "rounded-md px-3 py-3 text-base font-normal transition hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--accent))]",
+                    "rounded-md px-3 py-3 text-base font-bold transition hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--accent))]",
                     isActive
                       ? "bg-[hsl(var(--secondary))] text-[hsl(var(--accent))]"
                       : "text-[hsl(var(--muted-foreground))]",

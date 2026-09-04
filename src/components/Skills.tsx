@@ -149,7 +149,7 @@ const marqueeTools = [...allTools, ...allTools];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-display text-balance text-2xl font-extrabold leading-[1.2] sm:text-3xl">
+    <h3 className="font-display text-balance text-lg font-extrabold leading-[1.2] sm:text-xl">
       {children}
     </h3>
   );
