@@ -1,83 +1,175 @@
-import { motion } from "framer-motion";
-import { Brain, Code2, Database, Goal } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Quote } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-import { Card, CardContent } from "./ui/card";
+import Stats from "./Stats";
+import { cn } from "../lib/utils";
 
-const pillars = [
+const quotes = [
   {
-    title: "Intelligence artificielle",
-    text: "Explorer les modèles, comprendre les données et transformer les expérimentations en solutions utiles.",
-    icon: Brain,
+    text: "The world's most valuable resource is no longer oil, but data.",
+    author: "The Economist, 2017",
+  }
+];
+
+function PullQuote({ index }: { index: number }) {
+  const quote = quotes[index];
+  return (
+    <blockquote className="my-6 border-l-4 border-[hsl(var(--accent))] pl-5 text-left">
+      <p className="font-display text-balance text-xl font-bold italic leading-snug">
+        “{quote.text}”
+      </p>
+      <cite className="mt-2 block text-xs font-bold not-italic uppercase tracking-[0.14em] text-[hsl(var(--muted-foreground))]">
+        — {quote.author}
+      </cite>
+    </blockquote>
+  );
+}
+
+const journey = [
+  {
+    date: "2025 — Aujourd'hui",
+    short: "Present",
+    title: "Master 1 — Data Science & IA",
+    place: "EMIT Fianarantsoa",
+    current: true,
   },
   {
-    title: "Science des données",
-    text: "Nettoyer, analyser, visualiser et expliquer les données avec rigueur pour soutenir la décision.",
-    icon: Database,
+    date: "Décembre 2025",
+    short: "12/25",
+    title: "Formation Vue.js",
+    place: "Orange Digital Center Antananarivo",
   },
   {
-    title: "Développement",
-    text: "Créer des interfaces modernes et maintenables qui rendent les résultats data accessibles.",
-    icon: Code2,
+    date: "Juin 2025",
+    short: "06/25",
+    title: "Atelier de programmation Django",
+    place: "Django Girls Antananarivo",
   },
   {
-    title: "Objectif",
-    text: "Évoluer vers un rôle de Data Scientist capable de relier IA, produit et impact métier.",
-    icon: Goal,
+    date: "2022 — 2025",
+    short: "22-25",
+    title: "Licence en Informatique",
+    place: "Oniversity FJKM Ravelojaona Antananarivo (ONIFRA) · Parcours Développement d'Applications",
+  },
+  {
+    date: "2020 — 2021",
+    short: "20-21",
+    title: "1ère année en Météorologie",
+    place: "ENEAM Ivato Madagascar",
+  },
+  {
+    date: "2019",
+    short: "2019",
+    title: "Baccalauréat",
+    place: "Lycée Moderne Ampefiloha (LMA)",
   },
 ];
 
 export default function About() {
-  return (
-    <section id="about" className="section-shell">
-      <SectionHeading
-        eyebrow="À propos"
-        title="Une approche hybride entre analyse, IA et expérience utilisateur."
-        description="Mon parcours réunit la curiosité scientifique, le sens du détail et l’envie de construire des solutions numériques fiables."
-      />
+  const shouldReduceMotion = useReducedMotion();
 
-      <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+  return (
+    <section id="about" className="section-band section-band--tinted">
+      <div className="section-shell">
+      <SectionHeading eyebrow="" title="À propos de moi" />
+
+      <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.55 }}
-          className="glass-panel rounded-2xl p-7 sm:p-9"
+          className="p-2 text-justify sm:p-10"
         >
-          <p className="text-lg leading-8 text-[hsl(var(--muted-foreground))]">
-            Je suis étudiante en Science des Données et Intelligence Artificielle, passionnée par la
-            manière dont les données peuvent révéler des tendances, automatiser des tâches et aider
-            à prendre de meilleures décisions.
+          <Quote className="h-7 w-7 text-[hsl(var(--accent))]" />
+
+          <p className="mt-4 text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-lg">
+            Je suis Rakotomalala Harivola Ariane. Je transforme des données brutes en informations
+            exploitables : des analyses claires et des modèles fiables qui aident une entreprise à
+            comprendre une situation, anticiper une tendance et décider avec plus de certitude.
           </p>
-          <p className="mt-5 text-lg leading-8 text-[hsl(var(--muted-foreground))]">
-            J’aime autant l’analyse que la construction: modéliser, visualiser, développer des
-            applications et présenter des résultats avec clarté. Mon objectif est de progresser dans
-            des projets concrets mêlant machine learning, data engineering léger et interfaces web.
+
+          <PullQuote index={0} />
+
+          <p className="text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-lg">
+            Mon profil combine des compétences en Data Science et Intelligence Artificielle avec du
+            développement backend (PHP, Symfony, Laravel), ce qui me permet de couvrir tout le
+            processus : de l'exploration des données jusqu'à la mise en production d'une solution
+            utilisable.
           </p>
+          <p className="mt-5 text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-lg">
+            Autonome et rigoureuse, je m'adapte rapidement à un nouvel environnement ou une nouvelle
+            problématique, et je sais transformer un besoin encore flou en solution concrète et
+            opérationnelle.
+          </p>
+
+          <p className="text-base font-bold leading-8 sm:text-lg">
+            C'est cette capacité à allier rigueur analytique, sens pratique et technologie qui me
+            permet d'apporter une réelle valeur ajoutée à vos projets.
+          </p>
+
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-          {pillars.map((pillar, index) => (
-            <motion.div
-              key={pillar.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
-            >
-              <Card className="h-full transition duration-300 hover:-translate-y-1 hover:border-cyan-300/45">
-                <CardContent className="flex gap-4 p-5">
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-cyan-300/10 text-cyan-200">
-                    <pillar.icon className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <h3 className="font-bold">{pillar.title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-[hsl(var(--muted-foreground))]">{pillar.text}</p>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+          className="p-7"
+        >
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[hsl(var(--accent))]">
+            Je viens de très loin :)
+          </p>
+          {/* <h3 className="font-display mt-2 text-lg font-black">Mon parcours</h3> */}
+
+          <div className="relative mt-6">
+            <div
+              className={cn(
+                "timeline-dash absolute left-1/2 top-1 bottom-1 w-[3px] -translate-x-1/2",
+                shouldReduceMotion && "timeline-dash--static",
+              )}
+              aria-hidden="true"
+            />
+            <div className="space-y-3">
+              {journey.map((step, index) => {
+                const onRight = index % 2 === 0;
+                const content = (
+                  <>
+                    <p className="text-xs font-bold uppercase tracking-[0.08em] text-[hsl(var(--muted-foreground))]">
+                      {step.date}
+                    </p>
+                    <p className="mt-1 font-bold leading-snug">{step.title}</p>
+                    <p className="mt-1 text-xs leading-5 text-[hsl(var(--muted-foreground))]">
+                      {step.place}
+                    </p>
+                  </>
+                );
+
+                return (
+                  <div key={step.title} className="relative grid grid-cols-[1fr_auto_1fr] items-start gap-3">
+                    <div className={onRight ? "" : "pb-1 text-right"}>{!onRight && content}</div>
+                    <span
+                      className={cn(
+                        "relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border bg-[hsl(var(--background))] text-[10px] font-bold leading-none",
+                        step.current
+                          ? "border-[hsl(var(--accent))] bg-[hsl(var(--accent))] text-[hsl(var(--accent-foreground))]"
+                          : "border-[hsl(var(--accent)/0.4)] text-[hsl(var(--accent))]",
+                      )}
+                    >
+                      {step.short}
+                    </span>
+                    <div className={onRight ? "pb-1" : ""}>{onRight && content}</div>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                );
+              })}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="mt-14">
+        <Stats />
+      </div>
       </div>
     </section>
   );

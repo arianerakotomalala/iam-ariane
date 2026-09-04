@@ -3,18 +3,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] text-sm font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))] focus-visible:ring-offset-2 focus-visible:ring-offset-[hsl(var(--background))] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] shadow-[0_12px_35px_rgba(34,211,238,0.22)] hover:-translate-y-0.5 hover:bg-cyan-300",
+          "bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:-translate-y-0.5 hover:opacity-90",
         secondary:
-          "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:-translate-y-0.5 hover:brightness-110",
+          "bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:-translate-y-0.5 hover:bg-[hsl(var(--border))]",
         outline:
-          "border border-white/15 bg-white/5 text-[hsl(var(--foreground))] backdrop-blur hover:-translate-y-0.5 hover:border-cyan-300/55 hover:bg-cyan-300/10 dark:border-white/15",
-        ghost: "hover:bg-white/10 hover:text-cyan-100 dark:hover:bg-white/10",
-        link: "text-cyan-200 underline-offset-4 hover:underline",
+          "border border-[hsl(var(--border))] bg-transparent text-[hsl(var(--foreground))] hover:-translate-y-0.5 hover:border-[hsl(var(--accent))]",
+        ghost: "hover:bg-[hsl(var(--secondary))]",
+        link: "text-[hsl(var(--foreground))] underline underline-offset-4 hover:opacity-70",
       },
       size: {
         default: "h-11 px-5 py-2",

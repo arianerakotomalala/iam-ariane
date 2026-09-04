@@ -3,13 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Experience from "./components/Experience";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import ParticleBackground from "./components/ParticleBackground";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
+import WhatIDo from "./components/WhatIDo";
 import { Button } from "./components/ui/button";
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => setIsLoading(false), 720);
+    const timeout = window.setTimeout(() => setIsLoading(false), 600);
     const onScroll = () => setShowTop(window.scrollY > 620);
 
     onScroll();
@@ -55,12 +55,12 @@ export default function App() {
             key="loader"
             className="fixed inset-0 z-[100] grid place-items-center bg-[hsl(var(--background))]"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.45 } }}
+            exit={{ opacity: 0, transition: { duration: 0.4 } }}
           >
             <div className="flex flex-col items-center gap-5">
-              <div className="h-14 w-14 rounded-full border border-cyan-300/25 border-t-cyan-300 shadow-[0_0_35px_rgba(34,211,238,0.38)] motion-safe:animate-spin" />
-              <p className="text-sm font-medium uppercase tracking-[0.34em] text-cyan-100/80">
-                Initialisation IA
+              <div className="h-12 w-12 rounded-full border border-[hsl(var(--border))] border-t-[hsl(var(--foreground))] motion-safe:animate-spin" />
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.34em] text-[hsl(var(--muted-foreground))]">
+                Loading...
               </p>
             </div>
           </motion.div>
@@ -69,11 +69,11 @@ export default function App() {
 
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <main>
-        <Hero />
-        <About />
+        <Home />
         <Skills />
+        {/* <WhatIDo /> */}
         <Projects />
-        <Experience />
+        <About />
         <Contact />
       </main>
       <Footer />
@@ -90,7 +90,7 @@ export default function App() {
               size="icon"
               aria-label="Retour en haut"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="rounded-full shadow-[0_0_28px_rgba(34,211,238,0.28)]"
+              className="rounded-full"
             >
               <ArrowUp className="h-5 w-5" />
             </Button>
