@@ -28,7 +28,8 @@ export default function Home() {
       <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_500px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
           className="max-w-4xl lg:mt-20"
         >
@@ -87,7 +88,8 @@ export default function Home() {
         <motion.div
           className="relative mx-auto hidden aspect-square w-full max-w-[460px] lg:mx-0 lg:block"
           initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.75, delay: 0.15, ease: "easeOut" }}
         >
           <svg
