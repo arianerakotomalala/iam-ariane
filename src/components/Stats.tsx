@@ -16,7 +16,7 @@ const stats: Stat[] = [
 
 function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const inView = useInView(ref, { once: false, amount: 0.6 });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function Stats() {
           key={stat.label}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: false, amount: 0.4 }}
           transition={{ duration: 0.5, delay: index * 0.06 }}
           className="text-center"
         >

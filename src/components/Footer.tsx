@@ -82,7 +82,7 @@ export default function Footer() {
 
           <div>
             <p className="font-mono text-xs font-bold uppercase tracking-[0.22em] text-[hsl(var(--muted-foreground))]">
-              Connexion
+              Contact
             </p>
             <ul className="mt-4 space-y-3">
               {socials.map((social) => {

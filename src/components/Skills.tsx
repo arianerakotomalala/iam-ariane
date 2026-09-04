@@ -74,7 +74,7 @@ const categories = [
     icon: Server,
     items: [
       "Conception d'API",
-      "Développement backend",
+      "Développement d'applications",
       "Bases de données",
       "Architecture applicative",
       "Intégration frontend / backend",
@@ -178,7 +178,7 @@ export default function Skills() {
                 className="h-full"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="group h-full border border-transparent transition duration-300 hover:-translate-y-1.5 hover:border-[hsl(var(--accent))]">

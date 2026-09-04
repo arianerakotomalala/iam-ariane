@@ -25,7 +25,7 @@ export default function SectionHeading({
       className={centered ? "mx-auto mb-12 max-w-3xl text-center" : "mb-12 max-w-3xl"}
       initial={{ opacity: 0, y: 22 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
+      viewport={{ once: false, amount: 0.35 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
     >
       <p className="text-xs font-bold uppercase tracking-[0.22em] text-[hsl(var(--accent))]">
