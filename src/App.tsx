@@ -12,14 +12,14 @@ import WhatIDo from "./components/WhatIDo";
 import { Button } from "./components/ui/button";
 
 export default function App() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [isLoading, setIsLoading] = useState(true);
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("portfolio-theme") as "dark" | "light" | null;
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    setTheme(savedTheme ?? (prefersLight ? "light" : "dark"));
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(savedTheme ?? (prefersDark ? "dark" : "light"));
   }, []);
 
   useEffect(() => {

@@ -44,7 +44,6 @@ type Tool = {
 
 const categories = [
   {
-    number: "01",
     title: "Data Science",
     icon: Database,
     items: [
@@ -57,7 +56,6 @@ const categories = [
     ],
   },
   {
-    number: "02",
     title: "Intelligence artificielle",
     icon: Brain,
     items: [
@@ -69,7 +67,6 @@ const categories = [
     ],
   },
   {
-    number: "03",
     title: "Backend & Development",
     icon: Server,
     items: [
@@ -81,7 +78,6 @@ const categories = [
     ],
   },
   {
-    number: "04",
     title: "Soft Skills",
     icon: HeartHandshake,
     items: [
@@ -183,16 +179,12 @@ export default function Skills() {
               >
                 <Card className="group h-full border border-transparent transition duration-300 hover:-translate-y-1.5 hover:border-[hsl(var(--accent))]">
                   <CardContent className="flex h-full flex-col p-6">
-                    <div className="flex items-center justify-between">
-                      <span className="grid h-11 w-11 place-items-center rounded-full border border-[hsl(var(--accent)/0.35)] bg-[hsl(var(--accent)/0.08)]">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[hsl(var(--accent)/0.35)] bg-[hsl(var(--accent)/0.08)]">
                         <category.icon className="h-5 w-5 text-[hsl(var(--accent))]" />
                       </span>
-                      <span className="font-display text-2xl font-black text-[hsl(var(--accent)/0.3)]">
-                        {category.number}
-                      </span>
+                      <h3 className="font-display text-xl font-black">{category.title}</h3>
                     </div>
-
-                    <h3 className="font-display mt-4 text-xl font-black">{category.title}</h3>
 
                     <ul className="mt-4 space-y-2.5 text-base leading-8 text-[hsl(var(--muted-foreground))] sm:text-lg">
                       {category.items.map((item) => (
